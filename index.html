@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhóm 7 - Giới Thiệu Thành Viên</title>
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --accent-color: #FFB300;
+            --text-dark: #2C3E50;
+            --text-light: #5A6B7C;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #fffbeb 50%, #f0fdf4 100%);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- BACKGROUND ĐỒ HỌA GIÁO DỤC CHUYÊN NGHIỆP --- */
+        .edu-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        /* --- HIỆU ỨNG CHUYỂN ĐỘNG BẠN VÒNG TRÒN MỜ DẦN --- */
+        .semi-circle-wave {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            height: 600px;
+            border-bottom-left-radius: 600px;
+            border-bottom-right-radius: 600px;
+            background: radial-gradient(circle at top, rgba(74, 144, 226, 0.2) 0%, rgba(74, 144, 226, 0.05) 50%, transparent 70%);
+            mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+            z-index: 2;
+            animation: pulseWave 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseWave {
+            0% { transform: translateX(-50%) scale(0.95); opacity: 0.6; }
+            100% { transform: translateX(-50%) scale(1.05); opacity: 1; }
+        }
+
+        /* --- BỐ CỤC CHÍNH --- */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        /* --- CARD THÀNH VIÊN --- */
+        .member-card {
+            background: transparent;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- KHUNG HÌNH ĐÁM MÂY + TRÀN VIỀN MỜ --- */
+        .image-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            position: relative;
+            border-radius: 70% 30% 50% 50% / 50% 50% 30% 70%;
+            background: transparent;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px 10px white, 0 0 15px rgba(74, 144, 226, 0.1);
+            transition: border-radius 0.5s ease;
+        }
+
+        .member-card:hover .image-container {
+            border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+        }
+
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: -webkit-optimize-contrast;
+            filter: contrast(1.05) brightness(1.02);
+            mask-image: radial-gradient(circle, black 60%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+        }
+
+        /* --- THÔNG TIN THÀNH VIÊN --- */
+        .member-name {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin: 10px 0 5px;
+            font-weight: 700;
+        }
+
+        .member-role {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .member-slogan {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+            line-height: 1.4;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .member-slogan::before, .member-slogan::after {
+            content: '"';
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hiệu ứng sóng bán nguyệt mờ 2 bên -->
+    <div class="semi-circle-wave"></div>
+
+    <!-- Khung icon học tập nền (SVG trực quan, tươi tắn) -->
+    <svg class="edu-background" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <!-- Đám mây -->
+        <path d="M50,100 Q65,80 80,100 T110,100 Q120,120 100,130 H50 Q30,120 50,100 Z" fill="#4A90E2" style="transform: translate(5%, 10%) scale(1.5); opacity: 0.3;"/>
+        <!-- Nón tốt nghiệp -->
+        <path d="M20,50 L50,35 L80,50 L50,65 Z M50,65 L50,85 M35,58 L35,80 Q50,90 65,80 L65,58" stroke="#4A90E2" stroke-width="2" fill="none" style="transform: translate(85%, 20%) scale(1.3);"/>
+        <!-- Sách -->
+        <path d="M10,20 H40 V80 H10 Z M40,20 H70 V80 H40 Z" stroke="#FFB300" stroke-width="2" fill="none" style="transform: translate(3%, 65%) scale(1.2);"/>
+        <!-- Thước kẻ -->
+        <path d="M10,20 H90 V40 H10 Z M20,20 V30 M30,20 V25 M40,20 V30 M50,20 V25 M60,20 V30 M70,20 V25 M80,20 V30" stroke="#4A90E2" stroke-width="2" fill="none" style="transform: translate(15%, 80%) rotate(15deg);"/>
+        <!-- Đồng hồ -->
+        <circle cx="30" cy="30" r="25" stroke="#FFB300" stroke-width="2" fill="none" style="transform: translate(88%, 70%) scale(1.2);"/>
+        <polyline points="30,12 30,30 42,30" stroke="#FFB300" stroke-width="2" fill="none" style="transform: translate(88%, 70%) scale(1.2);"/>
+    </svg>
+
+    <div class="container">
+        <h1 class="title">Nhóm 7</h1>
+
+        <div class="team-grid">
+            <!-- 1. Nguyễn Lê Cẩm Tiên -->
+            <div class="member-card">
+                <div class="image-container">
+                    <img class="member-img" src="https://picsum.photos/300/300?random=1" alt="Nguyễn Lê Cẩm Tiên">
+                </div>
+                <div class="member-name">Nguyễn Lê Cẩm Tiên</div>
+                <div class="member-role">Trưởng nhóm</div>
+                <div class="member-slogan">Unlock Your English Potential</div>
+            </div>
+
+            <!-- 2. Lê Quỳnh Trâm -->
+            <div class="member-card">
+                <div class="image-container">
+                    <img class="member-img" src="https://picsum.photos/300/300?random=2" alt="Lê Quỳnh Trâm">
+                </div>
+                <div class="member-name">Lê Quỳnh Trâm</div>
+                <div class="member-role">Thành viên</div>
+                <div class="member-slogan">Don't just learn English. Live it.</div>
+            </div>
+
+            <!-- 3. Nguyễn Thị Kim Phương -->
+            <div class="member-card">
+                <div class="image-container">
+                    <img class="member-img" src="https://picsum.photos/300/300?random=3" alt="Nguyễn Thị Kim Phương">
+                </div>
+                <div class="member-name">Nguyễn Thị Kim Phương</div>
+                <div class="member-role">Thành viên</div>
+                <div class="member-slogan">Learning a language is opening a new window to the world</div>
+            </div>
+
+            <!-- 4. Bùi Thị Mỹ Yến -->
+            <div class="member-card">
+                <div class="image-container">
+                    <img class="member-img" src="https://picsum.photos/300/300?random=4" alt="Bùi Thị Mỹ Yến">
+                </div>
+                <div class="member-name">Bùi Thị Mỹ Yến</div>
+                <div class="member-role">Thành viên</div>
+                <div class="member-slogan">Think outside the box, speak inside the grammar</div>
+            </div>
+
+            <!-- 5. Nguyễn Minh Hân -->
+            <div class="member-card">
+                <div class="image-container">
+                    <img class="member-img" src="https://picsum.photos/300/300?random=5" alt="Nguyễn Minh Hân">
+                </div>
+                <div class="member-name">Nguyễn Minh Hân</div>
+                <div class="member-role">Thành viên</div>
+                <div class="member-slogan">English opens doors to a brighter future</div>
+            </div>
+
+            <!-- 6. Trần An Thị Ái Duyên -->
+            <div class="member-card">
+                <div class="image-container">
+                    <img class="member-img" src="https://picsum.photos/300/300?random=6" alt="Trần An Thị Ái Duyên">
+                </div>
+                <div class="member-name">Trần An Thị Ái Duyên</div>
+                <div class="member-role">Thành viên</div>
+                <div class="member-slogan">Learning is a journey, not a test.</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
